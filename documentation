@@ -1,0 +1,129 @@
+Task Manager API Documentation
+Base URL
+arduino
+Copy code
+http://localhost:3000
+Endpoints
+1. Retrieve All Tasks
+bash
+Copy code
+GET /tasks
+Description
+Retrieves a list of all tasks.
+
+Response
+Status Code: 200 OK
+Body:
+json
+
+[
+  {
+    "id": "1",
+    "title": "Task 1",
+    "description": "Description of Task 1"
+  },
+  {
+    "id": "2",
+    "title": "Task 2",
+    "description": "Description of Task 2"
+  }
+]
+2. Retrieve a Specific Task by ID
+bash
+
+GET /tasks/:id
+Description
+Retrieves a specific task by its ID.
+
+Parameters
+id: ID of the task to retrieve.
+Response
+Status Code: 200 OK
+Body:
+json
+
+{
+  "id": "1",
+  "title": "Task 1",
+  "description": "Description of Task 1"
+}
+Status Code: 404 Not Found
+Body:
+json
+
+{
+  "message": "Task not found."
+}
+3. Create a New Task
+bash
+
+POST /tasks
+Description
+Creates a new task.
+
+Request Body
+title: Title of the task (required).
+description: Description of the task (required).
+Response
+Status Code: 201 Created
+Body:
+json
+
+{
+  "id": "3",
+  "title": "New Task",
+  "description": "Description of New Task"
+}
+4. Update an Existing Task by ID
+bash
+
+PUT /tasks/:id
+Description
+Updates an existing task by its ID.
+
+Parameters
+id: ID of the task to update.
+Request Body
+title: New title of the task (required).
+description: New description of the task (required).
+Response
+Status Code: 200 OK
+Body:
+json
+
+{
+  "id": "3",
+  "title": "Updated Task",
+  "description": "Updated description of Task"
+}
+Status Code: 404 Not Found
+Body:
+json
+
+{
+  "message": "Task not found."
+}
+5. Delete a Task by ID
+bash
+
+DELETE /tasks/:id
+Description
+Deletes a task by its ID.
+
+Parameters
+id: ID of the task to delete.
+Response
+Status Code: 200 OK
+Body:
+json
+
+{
+  "message": "Task deleted successfully."
+}
+Status Code: 404 Not Found
+Body:
+json
+
+{
+  "message": "Task not found."
+}
